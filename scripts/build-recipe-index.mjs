@@ -15,16 +15,6 @@ function extractJsonLd(html) {
     return JSON.parse(match[1].trim());
 }
 
-function normaliseIngredient(ingredient) {
-    return ingredient
-        .replace(/^\d+([./–-]\d+)?\s*/g, "")
-        .replace(/^\d+\s?(g|kg|ml|l|tbsp|tsp|cloves?|large|small|medium)\s+/i, "")
-        .replace(/\([^)]*\)/g, "")
-        .replace(/,\s*.*/g, "")
-        .trim()
-        .toLowerCase();
-}
-
 async function getHtmlFiles(dir) {
     const entries = await fs.readdir(dir, { withFileTypes: true });
 
@@ -48,7 +38,6 @@ async function getHtmlFiles(dir) {
 }
 
 const files = await getHtmlFiles(recipesDir);
-
 const recipes = [];
 
 for (const file of files) {
@@ -62,9 +51,7 @@ for (const file of files) {
     recipes.push({
         title: jsonLd.name,
         url: `/${repoName}/${relativePath}`,
-        ingredients: [...new Set((jsonLd.recipeIngredient ?? []).map(normaliseIngredient))]
-            .filter(Boolean)
-            .sort(),
+        ingredients: jsonLd.recipeIngredient ?? [],
     });
 }
 
