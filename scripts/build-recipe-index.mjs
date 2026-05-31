@@ -54,59 +54,9 @@ function buildIndexHtml(recipes) {
 
     <title>Family Recipes</title>
     <meta name="description" content="A browsable index of family-friendly recipes." />
-
-    <style>
-        body {
-            max-width: 960px;
-            margin: 40px auto;
-            padding: 0 20px;
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.6;
-            color: #222;
-            background: #fff;
-        }
-
-        h1, h2 {
-            color: #111;
-        }
-
-        a {
-            color: #0645ad;
-        }
-
-        .intro {
-            margin-bottom: 28px;
-        }
-
-        .recipe-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 18px;
-        }
-
-        .recipe-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 16px;
-            background: #fafafa;
-        }
-
-        .recipe-card h2 {
-            margin-top: 0;
-            font-size: 1.2rem;
-        }
-
-        .recipe-card ul {
-            margin-bottom: 0;
-            padding-left: 20px;
-        }
-
-        .recipe-card li {
-            margin-bottom: 6px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="recipe-index">
 
 <h1>Family Recipes</h1>
 
